@@ -1,0 +1,27 @@
+<h3>User List Component</h3>
+<hr>
+<div class="row">
+  <div class="col-sm-6" *ngFor="let user of users">
+    <app-user-edit  *ngIf="user.editable" [user]="user" (updateUserEvent)="update($event)"></app-user-edit>
+    <div class="card" *ngIf="!user.editable">
+      <img class="avatar" src="https://d3hdz4r8kacav0.cloudfront.net/images/training/User-Avatar-36.png">
+      <!-- <div class="card-header">
+          
+      </div> -->
+      <div class="card-body">
+        <div class="container" >
+          <p>{{user._id}}</p>
+          <p><b>Nombre : {{user.first_name}}</b></p>
+          <p>Apellido : {{user.last_name }}</p>
+          <p>email : {{user.email}}</p>
+        </div>
+      </div>
+      <div class="card-footer text-muted">
+        <div class="text-right">
+          <button (click)="destroy(user)" class="btn btn-danger">delete</button>
+          <button class="btn btn-info" (click)="user.editable = !user.editable">update</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
